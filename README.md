@@ -1,12 +1,17 @@
 
 # vue3-lazyload-img-comonpent
 
-基于vue3实现的图片懒加载组件
+基于vue3实现的自带 预载、加载失败效果的 图片懒加载组件
 
+## npm安装
 
+```bash
+  yarn add vue3-lazyload-img
+  npm i vue3-lazyload-img
+```
 
-
-## start
+## 快速上手
+### start
 
 ```bash
   yarn install
@@ -14,13 +19,13 @@
 ```bash
   yarn run dev
 ```
-## build
+### build
 
 ```bash
   yarn run build （打包后需要在lazyload-img.es.js中手动引入css）
 ```
 
-## tsc
+### 生成.d.ts
 
 ```bash
   yarn global  add dtsmake

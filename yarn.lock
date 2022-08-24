@@ -1210,10 +1210,10 @@ vue-tsc@^0.39.5:
     "@volar/vue-language-core" "0.39.5"
     "@volar/vue-typescript" "0.39.5"
 
-vue3-lazyload-img@0.0.10:
-  version "0.0.10"
-  resolved "https://registry.npmjs.org/vue3-lazyload-img/-/vue3-lazyload-img-0.0.10.tgz#ea8856bb3f4aa59bce67c0d2b5de4beecb6c325f"
-  integrity sha512-w9cAzPGhGUfxFeoOhHWmCiUjyls49jNSsV/8cLcYPczHUKnt9m+JEBtCvc1ZO82jY8M5xbed7rtADlmH7z5p/g==
+vue3-lazyload-img@0.0.11:
+  version "0.0.11"
+  resolved "https://registry.npmjs.org/vue3-lazyload-img/-/vue3-lazyload-img-0.0.11.tgz#86c076756cfbeebc6eff87dd12ae6a86129549f4"
+  integrity sha512-lj1dGs0OEbmzLvwKf5mK6MatqhwC9fCUGwg1jU4vD/6D2LYIPYhcLb9i9XAgDle2vxABZuQel9GrHflslEZEEA==
 
 vue@^3.2.6:
   version "3.2.37"

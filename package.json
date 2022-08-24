@@ -11,7 +11,7 @@
     "less": "^4.1.3",
     "tern": "^0.24.3",
     "vue": "^3.2.6",
-    "vue3-lazyload-img": "0.0.10"
+    "vue3-lazyload-img": "0.0.11"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^3.0.3",

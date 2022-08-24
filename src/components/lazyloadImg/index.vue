@@ -55,7 +55,6 @@ const props = defineProps({
 const loadImg = (): Promise<string> => {
   return new Promise((res, rej) => {
     try {
-      /**将图片转base64(会按比例放大或者缩小) */
       const imgx = new Image();
       imgx.src = props.src;
       imgx.setAttribute("crossOrigin", "Anonymous");
@@ -66,7 +65,6 @@ const loadImg = (): Promise<string> => {
           imgBoxClass.value = "img-max-width";
         }
 
-        /**不转base64可以这样写(原图) */
         loadState.value = isLoadEnum.success;
         retryLoadNum = 0;
         imgSrc.value = props.src;
