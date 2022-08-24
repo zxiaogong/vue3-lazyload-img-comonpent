@@ -1,0 +1,26 @@
+{
+  "name": "vue3-lazyload-img",
+  "version": "0.0.11",
+  "description": "vue3 Picture lazy loading",
+  "private": false,
+  "author": "zxiaogong",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "files": [
+    "lib",
+    "type"
+  ],
+  "main": "lib/lazyload-img.es.js",
+  "types": "type/lazyload-img.es.d.ts",
+  "keywords": [
+    "vue",
+    "Lazy loading",
+    "vue3",
+    "Picture"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/zxiaogong/vue3-lazyload-img-comonpent"
+  }
+}
