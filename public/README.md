@@ -4,6 +4,11 @@
 vue3 图片懒加载
 
 
+## install
+```bash
+  yarn add vue3-lazyload-img
+  npm i vue3-lazyload-img
+```
 ## example
 
 Vue:
@@ -43,9 +48,6 @@ app.use(lazyloadImgInit,{
   retryLoad: ...
 })
 app.mount('#app')
-
-
-
 ```
 
 ## API 

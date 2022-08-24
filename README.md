@@ -9,8 +9,10 @@
   yarn add vue3-lazyload-img
   npm i vue3-lazyload-img
 ```
+## 用法
+文档：https://github.com/zxiaogong/vue3-lazyload-img-comonpent/blob/master/public/README.md
 
-## 快速上手
+## 启动
 ### start
 
 ```bash
