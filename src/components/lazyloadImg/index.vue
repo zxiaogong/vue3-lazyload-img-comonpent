@@ -73,8 +73,10 @@ const loadImg = (): Promise<string> => {
       imgx.onerror = (e) => {
         retryLoadNum -= 1;
         if (retryLoadNum) {
-          setTimeout(async () => {
+          let timer: number | null = setTimeout(async () => {
             await loadImg();
+            clearTimeout(timer as number)
+            timer = null
           }, 1000);
         } else {
           loadState.value = isLoadEnum.error;
