@@ -1,3 +1,4 @@
+import "./style.css";
 import { defineComponent as f, ref as _, watch as C, openBlock as l, createElementBlock as p, pushScopeId as k, popScopeId as E, createElementVNode as v, unref as d, createBlock as m, normalizeClass as z, normalizeStyle as P, onMounted as O } from "vue";
 let i = {
   retryLoad: 5
