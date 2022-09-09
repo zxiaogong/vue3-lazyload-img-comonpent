@@ -1,6 +1,6 @@
 {
   "name": "vue3-lazyload-img",
-  "version": "0.0.14",
+  "version": "0.1.0",
   "description": "vue3 Picture lazy loading",
   "private": false,
   "author": "zxiaogong",

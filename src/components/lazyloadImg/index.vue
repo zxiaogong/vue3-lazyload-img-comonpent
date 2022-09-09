@@ -20,6 +20,8 @@ const imgBoxRef = ref<any>(null);
 const imgBoxSize = ref(0);
 const loadState = ref<isLoadEnum>(isLoadEnum.load);
 const imgSrc = ref("");
+let imgWidth = 0
+let imgHeight = 0
 let retryLoadNum =
   lazayConfig.retryLoad && lazayConfig.retryLoad > 0
     ? lazayConfig.retryLoad
@@ -61,6 +63,12 @@ const loadImg = (): Promise<string> => {
           imgBoxClass.value = "img-max-width"
         } else if (imgx.width < imgx.height) {
           imgBoxClass.value = "img-max-height"
+        } else {
+          if (imgWidth > imgHeight) {
+            imgBoxClass.value = "img-max-height"
+          } else if (imgWidth < imgHeight) {
+            imgBoxClass.value = "img-max-width"
+          }
         }
 
         loadState.value = isLoadEnum.success;
@@ -125,10 +133,10 @@ onMounted(() => {
     handleIntersect();
   }
 
-  const imgHeight = parseInt(
+  imgHeight = parseInt(
     getComputedStyle(imgBoxRef?.value).getPropertyValue("height")
   );
-  const imgWidth = parseInt(
+  imgWidth = parseInt(
     getComputedStyle(imgBoxRef?.value).getPropertyValue("width")
   );
 
@@ -144,6 +152,10 @@ watch(
   /**通过最小宽/高计算预加载样式（大小） */
   () => {
     loadState.value = isLoadEnum.load
+    retryLoadNum =
+      lazayConfig.retryLoad && lazayConfig.retryLoad > 0
+        ? lazayConfig.retryLoad
+        : 1;
     handleIntersect()
   }
 );
