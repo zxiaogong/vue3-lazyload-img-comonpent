@@ -1,15 +1,21 @@
 <script setup lang="ts">
-import { ref } from "vue"
+import { ref,onMounted } from "vue"
 const getUrl = (url: string) => {
   console.log(new URL(url, import.meta.url))
   return new URL(url, import.meta.url).href
 }
+const img = ref('https://v3.cn.vuejs.org/logo.png')
 const aax = ref<number[]>([])
 const bbx: number[] = []
 for (let i = 0; i < 50; i++) {
   bbx.push(i)
 }
 aax.value = bbx
+onMounted(()=>{
+  setTimeout(() => {
+    img.value="https://avatars.githubusercontent.com/u/6128107?s=200&v=4"
+  }, 7000);
+})
 </script>
 
 <template>
@@ -18,7 +24,7 @@ aax.value = bbx
       <lazyload-img  src='/src/asasets/vue.svg' class="logo"  />
     </a> -->
     <a href="https://vuejs.org/" v-for="item, index in aax" :key="index" target="_blank">
-      <lazyload-img src='https://v3.cn.vuejs.org/logo.png' class="logo" title="This is the title" />
+      <lazyload-img :src="img" class="logo" title="This is the title" />
     </a>
   </div>
 </template>

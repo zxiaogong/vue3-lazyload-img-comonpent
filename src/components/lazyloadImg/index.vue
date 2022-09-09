@@ -2,9 +2,7 @@
 <script lang="ts" setup>
 import "./index.less";
 import { lazayConfig } from "./lazyloadImgConfig";
-import { defineProps, ref, onMounted, Component } from "vue";
-/**引入组件 laztload-preimg */
-import { preImg } from "./deafultLazatBox/laztloadImg";
+import { defineProps, ref, onMounted, watch } from "vue";
 import loadErr from "./deafultLazatBox/loadErr.vue";
 import loadPre from "./deafultLazatBox/loadPre.vue";
 enum isLoadEnum {
@@ -60,9 +58,9 @@ const loadImg = (): Promise<string> => {
       imgx.setAttribute("crossOrigin", "Anonymous");
       imgx.onload = (e) => {
         if (imgx.width > imgx.height) {
-          imgBoxClass.value = "img-max-height";
+          imgBoxClass.value = "img-max-width"
         } else if (imgx.width < imgx.height) {
-          imgBoxClass.value = "img-max-width";
+          imgBoxClass.value = "img-max-height"
         }
 
         loadState.value = isLoadEnum.success;
@@ -96,6 +94,7 @@ const handleIntersect = () => {
     (intersect) => {
       if (loadState.value === isLoadEnum.load && intersect[0].isIntersecting) {
         loadImg();
+        /**卸载监听器 */
         oberver.unobserve(imgBoxRef.value);
       }
     },
@@ -140,6 +139,15 @@ onMounted(() => {
     imgBoxSize.value = imgWidth;
   }
 });
+watch(
+  () => props.src,
+  /**通过最小宽/高计算预加载样式（大小） */
+  () => {
+    loadState.value = isLoadEnum.load
+    handleIntersect()
+  }
+);
+
 </script>
 <template>
   <div :class="[props.class || 'defalut-img-root']" ref="imgBoxRef" :title="props.title">

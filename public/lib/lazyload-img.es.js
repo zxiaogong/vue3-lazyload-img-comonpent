@@ -1,14 +1,14 @@
 import "./style.css";
-import { defineComponent as h, ref as _, watch as C, openBlock as l, createElementBlock as p, pushScopeId as P, popScopeId as k, createElementVNode as v, unref as i, createBlock as m, normalizeClass as x, normalizeStyle as w, onMounted as L } from "vue";
-let u = {
+import { defineComponent as h, ref as u, watch as I, openBlock as l, createElementBlock as p, pushScopeId as k, popScopeId as E, createElementVNode as v, unref as i, createBlock as m, normalizeClass as x, normalizeStyle as P, onMounted as L } from "vue";
+let _ = {
   retryLoad: 5
 };
 const O = (o) => {
-  u = {
-    ...u,
+  _ = {
+    ..._,
     ...o
   };
-}, E = (o) => (P("data-v-a17e0516"), o = o(), k(), o), H = { class: "err-root" }, N = ["width", "height"], V = /* @__PURE__ */ E(() => /* @__PURE__ */ v("path", { d: "M4 0h5.293A1 1 0 0 1 10 .293L13.707 4a1 1 0 0 1 .293.707v5.586l-2.73-2.73a1 1 0 0 0-1.52.127l-1.889 2.644-1.769-1.062a1 1 0 0 0-1.222.15L2 12.292V2a2 2 0 0 1 2-2zm5.5 1.5v2a1 1 0 0 0 1 1h2l-3-3zm-1.498 4a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0z" }, null, -1)), D = /* @__PURE__ */ E(() => /* @__PURE__ */ v("path", { d: "M10.564 8.27 14 11.708V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-.293l3.578-3.577 2.56 1.536 2.426-3.395z" }, null, -1)), j = [
+}, $ = (o) => (k("data-v-a17e0516"), o = o(), E(), o), H = { class: "err-root" }, N = ["width", "height"], V = /* @__PURE__ */ $(() => /* @__PURE__ */ v("path", { d: "M4 0h5.293A1 1 0 0 1 10 .293L13.707 4a1 1 0 0 1 .293.707v5.586l-2.73-2.73a1 1 0 0 0-1.52.127l-1.889 2.644-1.769-1.062a1 1 0 0 0-1.222.15L2 12.292V2a2 2 0 0 1 2-2zm5.5 1.5v2a1 1 0 0 0 1 1h2l-3-3zm-1.498 4a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0z" }, null, -1)), D = /* @__PURE__ */ $(() => /* @__PURE__ */ v("path", { d: "M10.564 8.27 14 11.708V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-.293l3.578-3.577 2.56 1.536 2.426-3.395z" }, null, -1)), j = [
   V,
   D
 ], A = /* @__PURE__ */ h({
@@ -20,8 +20,8 @@ const O = (o) => {
     }
   },
   setup(o) {
-    const e = o, s = (r) => r * 0.45, t = _(s(e.boxSize));
-    return C(
+    const e = o, s = (r) => r * 0.45, t = u(s(e.boxSize));
+    return I(
       () => e.boxSize,
       (r, a) => {
         t.value = s(r);
@@ -56,7 +56,7 @@ const y = (o, e) => {
     }
   },
   setup(o) {
-    const e = o, s = e.specialErrSrc || u.errImg;
+    const e = o, s = e.specialErrSrc || _.errImg;
     return (t, r) => typeof i(s) == "string" ? (l(), p("img", {
       key: 0,
       src: i(s),
@@ -68,7 +68,7 @@ const y = (o, e) => {
   }
 });
 const q = /* @__PURE__ */ y(B, [["__scopeId", "data-v-833401eb"]]);
-const U = (o) => (P("data-v-eacdd0f4"), o = o(), k(), o), W = { class: "pre-root" }, F = /* @__PURE__ */ U(() => /* @__PURE__ */ v("span", { class: "visually-hidden" }, "Loading...", -1)), G = [
+const U = (o) => (k("data-v-eacdd0f4"), o = o(), E(), o), W = { class: "pre-root" }, F = /* @__PURE__ */ U(() => /* @__PURE__ */ v("span", { class: "visually-hidden" }, "Loading...", -1)), G = [
   F
 ], J = /* @__PURE__ */ h({
   __name: "loadDeafultPreImg",
@@ -86,8 +86,8 @@ const U = (o) => (P("data-v-eacdd0f4"), o = o(), k(), o), W = { class: "pre-root
         height: a + "px",
         "font-size": f + "px"
       };
-    }, t = _(s(e.boxSize));
-    return C(
+    }, t = u(s(e.boxSize));
+    return I(
       () => e.boxSize,
       (r, a) => {
         t.value = s(e.boxSize);
@@ -95,12 +95,12 @@ const U = (o) => (P("data-v-eacdd0f4"), o = o(), k(), o), W = { class: "pre-root
     ), (r, a) => (l(), p("div", W, [
       v("div", {
         class: x(["spinner-grow", "loadColor"]),
-        style: w(t.value),
+        style: P(t.value),
         role: "status"
       }, null, 4),
       v("div", {
         class: x(["spinner-border", "loadColor"]),
-        style: w(t.value),
+        style: P(t.value),
         role: "status"
       }, G, 4)
     ]));
@@ -119,7 +119,7 @@ const K = /* @__PURE__ */ y(J, [["__scopeId", "data-v-eacdd0f4"]]), Q = ["src"],
     }
   },
   setup(o) {
-    const e = o, s = e.specialPreSrc || u.preImg;
+    const e = o, s = e.specialPreSrc || _.preImg;
     return (t, r) => typeof i(s) == "string" ? (l(), p("img", {
       key: 0,
       src: i(s),
@@ -155,13 +155,13 @@ const Y = /* @__PURE__ */ y(X, [["__scopeId", "data-v-cc626453"]]), Z = ["title"
     }
   },
   setup(o) {
-    const e = o, s = _("img-equal"), t = _(null), r = _(0), a = _(2), f = _("");
-    let b = u.retryLoad && u.retryLoad > 0 ? u.retryLoad : 1;
+    const e = o, s = u("img-equal"), t = u(null), r = u(0), a = u(2), f = u("");
+    let b = _.retryLoad && _.retryLoad > 0 ? _.retryLoad : 1;
     const z = () => new Promise((d, n) => {
       try {
         const c = new Image();
         c.src = e.src, c.setAttribute("crossOrigin", "Anonymous"), c.onload = (S) => {
-          c.width > c.height ? s.value = "img-max-height" : c.width < c.height && (s.value = "img-max-width"), a.value = 0, b = 0, f.value = e.src, d(e.src);
+          c.width > c.height ? s.value = "img-max-width" : c.width < c.height && (s.value = "img-max-height"), a.value = 0, b = 0, f.value = e.src, d(e.src);
         }, c.onerror = (S) => {
           if (b -= 1, b) {
             let g = setTimeout(async () => {
@@ -173,7 +173,7 @@ const Y = /* @__PURE__ */ y(X, [["__scopeId", "data-v-cc626453"]]), Z = ["title"
       } catch (c) {
         a.value = 1, b = 0, n(c);
       }
-    }), $ = () => {
+    }), w = () => {
       const d = new IntersectionObserver(
         (n) => {
           a.value === 2 && n[0].isIntersecting && (z(), d.unobserve(t.value));
@@ -185,17 +185,22 @@ const Y = /* @__PURE__ */ y(X, [["__scopeId", "data-v-cc626453"]]), Z = ["title"
       d.observe(t.value);
     };
     return L(() => {
-      var I;
+      var C;
       const d = document.body.scrollHeight, n = document.documentElement.clientHeight;
       new IntersectionObserver((se) => {
-      }).observe(t.value), d <= n && ((I = t == null ? void 0 : t.value) == null ? void 0 : I.offsetTop) <= n + 300 ? z() : $();
+      }).observe(t.value), d <= n && ((C = t == null ? void 0 : t.value) == null ? void 0 : C.offsetTop) <= n + 300 ? z() : w();
       const S = parseInt(
         getComputedStyle(t == null ? void 0 : t.value).getPropertyValue("height")
       ), g = parseInt(
         getComputedStyle(t == null ? void 0 : t.value).getPropertyValue("width")
       );
       g > S ? r.value = S : r.value = g;
-    }), (d, n) => (l(), p("div", {
+    }), I(
+      () => e.src,
+      () => {
+        a.value = 2, w();
+      }
+    ), (d, n) => (l(), p("div", {
       class: x([e.class || "defalut-img-root"]),
       ref_key: "imgBoxRef",
       ref: t,
@@ -219,7 +224,7 @@ const Y = /* @__PURE__ */ y(X, [["__scopeId", "data-v-cc626453"]]), Z = ["title"
     ], 10, Z));
   }
 });
-const oe = /* @__PURE__ */ y(te, [["__scopeId", "data-v-67b7a97e"]]), ae = {
+const oe = /* @__PURE__ */ y(te, [["__scopeId", "data-v-db7b184d"]]), ae = {
   install: (o, e) => {
     O(e), o.component("lazyload-img", oe);
   }
