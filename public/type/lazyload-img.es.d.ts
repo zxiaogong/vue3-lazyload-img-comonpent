@@ -1,4 +1,4 @@
-import { App, Component, ExtractPropTypes, DefineComponent } from 'vue'
+import { App, Component, DefineComponent } from 'vue'
 export interface ConfiType {
 	preImg?: string | JSX.Element | Component
 	errImg?: string | JSX.Element | Component

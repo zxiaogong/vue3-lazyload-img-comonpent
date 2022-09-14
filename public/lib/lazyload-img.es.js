@@ -1,5 +1,5 @@
-import "./style.css";
-import { defineComponent as S, ref as _, watch as w, openBlock as i, createElementBlock as p, pushScopeId as E, popScopeId as $, createElementVNode as m, unref as u, createBlock as v, normalizeClass as b, normalizeStyle as k, onMounted as N } from "vue";
+import './style.css';
+import { defineComponent as S, ref as _, watch as w, openBlock as i, createElementBlock as p, pushScopeId as E, popScopeId as $, createElementVNode as m, unref as u, createBlock as v, normalizeClass as z, normalizeStyle as k, onMounted as N } from "vue";
 let d = {
   retryLoad: 5
 };
@@ -20,13 +20,13 @@ const V = (t) => {
     }
   },
   setup(t) {
-    const e = t, o = (a) => a * 0.45, s = _(o(e.boxSize));
+    const e = t, o = (r) => r * 0.45, s = _(o(e.boxSize));
     return w(
       () => e.boxSize,
-      (a, l) => {
-        s.value = o(a);
+      (r, l) => {
+        s.value = o(r);
       }
-    ), (a, l) => (i(), p("div", D, [
+    ), (r, l) => (i(), p("div", D, [
       (i(), p("svg", {
         xmlns: "http://www.w3.org/2000/svg",
         width: s.value,
@@ -40,8 +40,8 @@ const V = (t) => {
 });
 const x = (t, e) => {
   const o = t.__vccOpts || t;
-  for (const [s, a] of e)
-    o[s] = a;
+  for (const [s, r] of e)
+    o[s] = r;
   return o;
 }, q = /* @__PURE__ */ x(B, [["__scopeId", "data-v-a17e0516"]]), U = ["src"], W = /* @__PURE__ */ S({
   __name: "loadErr",
@@ -57,7 +57,7 @@ const x = (t, e) => {
   },
   setup(t) {
     const e = t, o = e.specialErrSrc || d.errImg;
-    return (s, a) => typeof u(o) == "string" ? (i(), p("img", {
+    return (s, r) => typeof u(o) == "string" ? (i(), p("img", {
       key: 0,
       src: u(o),
       class: "defalut-img"
@@ -79,8 +79,8 @@ const G = (t) => (E("data-v-eacdd0f4"), t = t(), $(), t), J = { class: "pre-root
     }
   },
   setup(t) {
-    const e = t, o = (a) => {
-      const l = a * 0.7, g = a * 0.12;
+    const e = t, o = (r) => {
+      const l = r * 0.7, g = r * 0.12;
       return {
         width: l + "px",
         height: l + "px",
@@ -89,17 +89,17 @@ const G = (t) => (E("data-v-eacdd0f4"), t = t(), $(), t), J = { class: "pre-root
     }, s = _(o(e.boxSize));
     return w(
       () => e.boxSize,
-      (a, l) => {
+      (r, l) => {
         s.value = o(e.boxSize);
       }
-    ), (a, l) => (i(), p("div", J, [
+    ), (r, l) => (i(), p("div", J, [
       m("div", {
-        class: b(["spinner-grow", "loadColor"]),
+        class: z(["spinner-grow", "loadColor"]),
         style: k(s.value),
         role: "status"
       }, null, 4),
       m("div", {
-        class: b(["spinner-border", "loadColor"]),
+        class: z(["spinner-border", "loadColor"]),
         style: k(s.value),
         role: "status"
       }, Q, 4)
@@ -120,7 +120,7 @@ const Y = /* @__PURE__ */ x(X, [["__scopeId", "data-v-eacdd0f4"]]), Z = ["src"],
   },
   setup(t) {
     const e = t, o = e.specialPreSrc || d.preImg;
-    return (s, a) => typeof u(o) == "string" ? (i(), p("img", {
+    return (s, r) => typeof u(o) == "string" ? (i(), p("img", {
       key: 0,
       src: u(o),
       class: "defalut-img"
@@ -130,7 +130,7 @@ const Y = /* @__PURE__ */ x(X, [["__scopeId", "data-v-eacdd0f4"]]), Z = ["src"],
     }, null, 8, ["box-size"]));
   }
 });
-const ee = /* @__PURE__ */ x(R, [["__scopeId", "data-v-cc626453"]]), te = ["title"], oe = { class: "defalut-img-box" }, se = ["src"], ae = /* @__PURE__ */ S({
+const ee = /* @__PURE__ */ x(R, [["__scopeId", "data-v-cc626453"]]), te = ["title"], oe = { class: "defalut-img-box" }, se = ["src"], re = /* @__PURE__ */ S({
   __name: "index",
   props: {
     src: {
@@ -155,11 +155,11 @@ const ee = /* @__PURE__ */ x(R, [["__scopeId", "data-v-cc626453"]]), te = ["titl
     }
   },
   setup(t) {
-    const e = t, o = _("img-equal"), s = _(null), a = _(0), l = _(2), g = _("");
-    let h = 0, y = 0, f = d.retryLoad && d.retryLoad > 0 ? d.retryLoad : 1, z = !1;
-    const C = (c, r) => {
-      c > r ? o.value = "img-max-width" : c < r || h > y ? o.value = "img-max-height" : h < y && (o.value = "img-max-width");
-    }, I = () => new Promise((c, r) => {
+    const e = t, o = _("img-equal"), s = _(null), r = _(0), l = _(2), g = _("");
+    let h = 0, y = 0, f = d.retryLoad && d.retryLoad > 0 ? d.retryLoad : 1, b = !1;
+    const C = (c, a) => {
+      c > a ? o.value = "img-max-width" : c < a || h > y ? o.value = "img-max-height" : h < y && (o.value = "img-max-width");
+    }, I = () => new Promise((c, a) => {
       try {
         const n = new Image();
         n.src = e.src, n.setAttribute("crossOrigin", "Anonymous"), n.onload = (H) => {
@@ -170,38 +170,38 @@ const ee = /* @__PURE__ */ x(R, [["__scopeId", "data-v-cc626453"]]), te = ["titl
               await I(), clearTimeout(P), P = null;
             }, 1e3);
           } else
-            l.value = 1, r(`${e.src} Invalid picture URL`);
+            l.value = 1, a(`${e.src} Invalid picture URL`);
         };
       } catch (n) {
-        l.value = 1, f = 0, r(n);
+        l.value = 1, f = 0, a(n);
       }
     }), L = () => {
       const c = new IntersectionObserver(
-        (r) => {
-          l.value === 2 && r[0].isIntersecting && (I(), c.unobserve(s.value), z = !1);
+        (a) => {
+          l.value === 2 && a[0].isIntersecting && (I(), c.unobserve(s.value), b = !1);
         },
         {
           threshold: 0
         }
       );
-      c.observe(s.value), z = !0;
+      c.observe(s.value), b = !0;
     };
     return N(() => {
       var n;
-      const c = document.body.scrollHeight, r = document.documentElement.clientHeight;
-      c <= r && ((n = s == null ? void 0 : s.value) == null ? void 0 : n.offsetTop) <= r + 300 ? I() : L(), y = parseInt(
+      const c = document.body.scrollHeight, a = document.documentElement.clientHeight;
+      c <= a && ((n = s == null ? void 0 : s.value) == null ? void 0 : n.offsetTop) <= a + 300 ? I() : L(), y = parseInt(
         getComputedStyle(s == null ? void 0 : s.value).getPropertyValue("height")
       ), h = parseInt(
         getComputedStyle(s == null ? void 0 : s.value).getPropertyValue("width")
-      ), h > y ? a.value = y : a.value = h;
+      ), h > y ? r.value = y : r.value = h;
     }), w(
       () => e.src,
       (c) => {
-        const r = new Image();
-        r.src = c, console.log(r.complete), r.complete ? (C(r.width, r.height), g.value = c, l.value = 0) : (l.value = 2, f = d.retryLoad && d.retryLoad > 0 ? d.retryLoad : 1, console.log(z), z || L());
+        const a = new Image();
+        a.src = c, a.complete ? (C(a.width, a.height), g.value = c, l.value = 0) : (l.value = 2, f = d.retryLoad && d.retryLoad > 0 ? d.retryLoad : 1, b || L());
       }
-    ), (c, r) => (i(), p("div", {
-      class: b([e.class || "defalut-img-root"]),
+    ), (c, a) => (i(), p("div", {
+      class: z([e.class || "defalut-img-root"]),
       ref_key: "imgBoxRef",
       ref: s,
       title: e.title
@@ -209,27 +209,27 @@ const ee = /* @__PURE__ */ x(R, [["__scopeId", "data-v-cc626453"]]), te = ["titl
       m("div", oe, [
         l.value === 2 ? (i(), v(ee, {
           key: 0,
-          "box-size": a.value,
+          "box-size": r.value,
           specialPreSrc: e.preSrc
         }, null, 8, ["box-size", "specialPreSrc"])) : l.value === 1 ? (i(), v(F, {
           key: 1,
-          "box-size": a.value,
+          "box-size": r.value,
           specialErrSrc: e.errSrc
         }, null, 8, ["box-size", "specialErrSrc"])) : (i(), p("img", {
           key: 2,
-          class: b([e.class ? o.value : "lazyload-img"]),
+          class: z([e.class ? o.value : "lazyload-img"]),
           src: g.value
         }, null, 10, se))
       ])
     ], 10, te));
   }
 });
-const re = /* @__PURE__ */ x(ae, [["__scopeId", "data-v-ab51cd47"]]), ce = {
+const ae = /* @__PURE__ */ x(re, [["__scopeId", "data-v-310f86d2"]]), ce = {
   install: (t, e) => {
-    V(e), t.component("lazyload-img", re);
+    V(e), t.component("lazyload-img", ae);
   }
 };
 export {
-  re as LazyloadImg,
+  ae as LazyloadImg,
   ce as default
 };

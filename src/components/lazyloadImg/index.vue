@@ -161,7 +161,6 @@ watch(
   (nextSrc) => {
     const img = new Image()
     img.src = nextSrc
-    console.log(img.complete)
     if (img.complete) {
       calculationImgSize(img.width, img.height)
       imgSrc.value = nextSrc
@@ -172,7 +171,6 @@ watch(
         lazayConfig.retryLoad && lazayConfig.retryLoad > 0
           ? lazayConfig.retryLoad
           : 1;
-      console.log(isOpenMmonitor)
       if (!isOpenMmonitor) {
         handleIntersect()
       }
