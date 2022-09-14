@@ -22,10 +22,14 @@ const loadState = ref<isLoadEnum>(isLoadEnum.load);
 const imgSrc = ref("");
 let imgWidth = 0
 let imgHeight = 0
+/**配置 */
 let retryLoadNum =
   lazayConfig.retryLoad && lazayConfig.retryLoad > 0
     ? lazayConfig.retryLoad
     : 1;
+
+/**是否开启监听 */
+let isOpenMmonitor = false
 
 const props = defineProps({
   /**图片链接 */
@@ -50,7 +54,22 @@ const props = defineProps({
     type: Object || undefined,
     default: undefined,
   },
-});
+})
+
+/**计算图片宽高 */
+const calculationImgSize = (width: number, height: number) => {
+  if (width > height) {
+    imgBoxClass.value = "img-max-width"
+  } else if (width < height) {
+    imgBoxClass.value = "img-max-height"
+  } else {
+    if (imgWidth > imgHeight) {
+      imgBoxClass.value = "img-max-height"
+    } else if (imgWidth < imgHeight) {
+      imgBoxClass.value = "img-max-width"
+    }
+  }
+}
 
 const loadImg = (): Promise<string> => {
   return new Promise((res, rej) => {
@@ -59,18 +78,7 @@ const loadImg = (): Promise<string> => {
       imgx.src = props.src;
       imgx.setAttribute("crossOrigin", "Anonymous");
       imgx.onload = (e) => {
-        if (imgx.width > imgx.height) {
-          imgBoxClass.value = "img-max-width"
-        } else if (imgx.width < imgx.height) {
-          imgBoxClass.value = "img-max-height"
-        } else {
-          if (imgWidth > imgHeight) {
-            imgBoxClass.value = "img-max-height"
-          } else if (imgWidth < imgHeight) {
-            imgBoxClass.value = "img-max-width"
-          }
-        }
-
+        calculationImgSize(imgx.width, imgx.height)
         loadState.value = isLoadEnum.success;
         retryLoadNum = 0;
         imgSrc.value = props.src;
@@ -104,6 +112,7 @@ const handleIntersect = () => {
         loadImg();
         /**卸载监听器 */
         oberver.unobserve(imgBoxRef.value);
+        isOpenMmonitor = false
       }
     },
     {
@@ -112,6 +121,7 @@ const handleIntersect = () => {
   );
   //挂载监听器
   oberver.observe(imgBoxRef.value);
+  isOpenMmonitor = true
 };
 
 /**组件挂载后 */
@@ -120,8 +130,6 @@ onMounted(() => {
   const totalHeigth = document.body.scrollHeight;
   //页面可视化高度
   const showViewHeight = document.documentElement.clientHeight;
-  const oberver = new IntersectionObserver((intersect) => { });
-  oberver.observe(imgBoxRef.value);
   /**当页面总高度小于等于可视化高度时，就不需要注册滚动时间的监听 */
   if (
     totalHeigth <= showViewHeight &&
@@ -150,13 +158,25 @@ onMounted(() => {
 watch(
   () => props.src,
   /**通过最小宽/高计算预加载样式（大小） */
-  () => {
-    loadState.value = isLoadEnum.load
-    retryLoadNum =
-      lazayConfig.retryLoad && lazayConfig.retryLoad > 0
-        ? lazayConfig.retryLoad
-        : 1;
-    handleIntersect()
+  (nextSrc) => {
+    const img = new Image()
+    img.src = nextSrc
+    console.log(img.complete)
+    if (img.complete) {
+      calculationImgSize(img.width, img.height)
+      imgSrc.value = nextSrc
+      loadState.value = isLoadEnum.success
+    } else {
+      loadState.value = isLoadEnum.load
+      retryLoadNum =
+        lazayConfig.retryLoad && lazayConfig.retryLoad > 0
+          ? lazayConfig.retryLoad
+          : 1;
+      console.log(isOpenMmonitor)
+      if (!isOpenMmonitor) {
+        handleIntersect()
+      }
+    }
   }
 );
 
@@ -165,9 +185,8 @@ watch(
   <div :class="[props.class || 'defalut-img-root']" ref="imgBoxRef" :title="props.title">
     <div class="defalut-img-box">
       <!-- 预加载显示的内容（可以自定义） -->
-      <load-pre v-if="loadState === isLoadEnum.load" :box-size="imgBoxSize" :specialPreSrc="props.preSrc"></load-pre>
-      <load-Err v-else-if="loadState === isLoadEnum.error" :box-size="imgBoxSize" :specialErrSrc="props.errSrc">
-      </load-Err>
+      <load-pre v-if="loadState === isLoadEnum.load" :box-size="imgBoxSize" :specialPreSrc="props.preSrc" />
+      <load-Err v-else-if="loadState === isLoadEnum.error" :box-size="imgBoxSize" :specialErrSrc="props.errSrc" />
       <img v-else :class="[props.class ? imgBoxClass : 'lazyload-img']" :src="imgSrc" />
     </div>
   </div>
