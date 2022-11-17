@@ -1,6 +1,6 @@
 import { App } from 'vue'
-import LazyloadImg from './components/lazyloadImg/index.vue';
-import lazyloadImgConfig, { confiType } from './components/lazyloadImg/lazyloadImgConfig';
+import LazyloadImg from './lazyloadImg/index.vue';
+import lazyloadImgConfig, { confiType } from './lazyloadImg/lazyloadImgConfig';
 
 
 const lazyloadImgComponent = {
