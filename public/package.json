@@ -1,6 +1,6 @@
 {
   "name": "vue3-lazyload-img",
-  "version": "0.1.3",
+  "version": "0.1.5",
   "description": "基于vue3简单的图片懒加载组件",
   "private": false,
   "author": "zxiaogong",

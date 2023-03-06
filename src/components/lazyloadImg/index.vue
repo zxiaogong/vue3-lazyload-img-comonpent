@@ -70,19 +70,31 @@ const calculationImgSize = (width: number, height: number) => {
     }
   }
 }
+const getImgBase64 = (imgx: any): Promise<string> => {
+  return new Promise((res, rej) => {
+    calculationImgSize(imgx.width, imgx.height)
+    retryLoadNum = 0;
+    const canvas = document.createElement("canvas");
+    canvas.width = imgx.width;
+    canvas.height = imgx.height;
+    const ctx = canvas.getContext("2d");
+    ctx?.drawImage(imgx, 0, 0, imgx.width, imgx.height);
+    const ext = imgx.src.substring(imgx.src.lastIndexOf(".") + 1).toLowerCase();
+    const imgBase64 = canvas.toDataURL("image/" + ext, 1);
+    res(imgBase64)
+  })
+}
 
 const loadImg = (): Promise<string> => {
   return new Promise((res, rej) => {
     try {
-      const imgx = new Image();
-      imgx.src = props.src;
-      imgx.setAttribute("crossOrigin", "Anonymous");
+      const imgx = createImgElement(props.src)
       imgx.onload = (e) => {
-        calculationImgSize(imgx.width, imgx.height)
-        loadState.value = isLoadEnum.success;
-        retryLoadNum = 0;
-        imgSrc.value = props.src;
-        res(props.src);
+        getImgBase64(imgx).then((imgBase64: string) => {
+          loadState.value = isLoadEnum.success;
+          imgSrc.value = imgBase64
+          res(imgBase64)
+        })
       };
       imgx.onerror = (e) => {
         retryLoadNum -= 1;
@@ -124,6 +136,13 @@ const handleIntersect = () => {
   isOpenMmonitor = true
 };
 
+const createImgElement = (imgUrl: string): HTMLImageElement => {
+  const imgx = new Image()
+  imgx.src = imgUrl
+  imgx.setAttribute("crossOrigin", "Anonymous");
+  return imgx
+}
+
 /**组件挂载后 */
 onMounted(() => {
   //页面总高度
@@ -155,16 +174,19 @@ onMounted(() => {
     imgBoxSize.value = imgWidth;
   }
 });
+
 watch(
   () => props.src,
   /**通过最小宽/高计算预加载样式（大小） */
-  (nextSrc) => {
-    const img = new Image()
-    img.src = nextSrc
-    if (img.complete) {
-      calculationImgSize(img.width, img.height)
-      imgSrc.value = nextSrc
-      loadState.value = isLoadEnum.success
+  (nextSrc: string) => {
+    const imgx = createImgElement(nextSrc)
+    if (imgx.complete) {
+      calculationImgSize(imgx.width, imgx.height)
+      getImgBase64(imgx).then((imgBase64: string) => {
+        imgSrc.value = imgBase64
+        loadState.value = isLoadEnum.success
+      })
+
     } else {
       loadState.value = isLoadEnum.load
       retryLoadNum =
@@ -183,8 +205,8 @@ watch(
   <div :class="[props.class || 'defalut-img-root']" ref="imgBoxRef" :title="props.title">
     <div class="defalut-img-box">
       <!-- 预加载显示的内容（可以自定义） -->
-      <load-pre v-if="loadState === isLoadEnum.load" :box-size="imgBoxSize" :specialPreSrc="props.preSrc" />
-      <load-Err v-else-if="loadState === isLoadEnum.error" :box-size="imgBoxSize" :specialErrSrc="props.errSrc" />
+      <loadPre v-if="loadState === isLoadEnum.load" :box-size="imgBoxSize" :specialPreSrc="props.preSrc" />
+      <loadErr v-else-if="loadState === isLoadEnum.error" :box-size="imgBoxSize" :specialErrSrc="props.errSrc" />
       <img v-else :class="[props.class ? imgBoxClass : 'lazyload-img']" :src="imgSrc" />
     </div>
   </div>

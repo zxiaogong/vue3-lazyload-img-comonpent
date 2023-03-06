@@ -1,6 +1,6 @@
 {
   "name": "vue3-lazyload-img-comonpent",
-  "version": "0.1.3",
+  "version": "0.1.5",
   "description": "vue3 图片懒加载",
   "scripts": {
     "dev": "vite",

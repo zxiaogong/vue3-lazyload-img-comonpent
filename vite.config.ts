@@ -9,7 +9,7 @@ export default defineConfig({
   build: {
     outDir:"public/lib",
     lib: {
-      entry: path.resolve(__dirname, 'src/export.ts'),
+      entry: path.resolve(__dirname, './src/components/export.ts'),
       name: 'lazyloadImg',
       fileName: (format) => `lazyload-img.${format}.js`
     },
